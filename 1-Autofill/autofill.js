@@ -60,8 +60,8 @@ const
 		checkIfShippingFilled: cb => {
 			var error = ''
 			Data.fieldsShipping.forEach((input, index, array) => {
-				// if (document.getElementById(input).value == '' && $('#'+input).is(":visible")) {
-				if (document.getElementById(input).value == '') {
+				if (document.getElementById(input).value == '' && $('#'+input).is(":visible")) {
+				// if (document.getElementById(input).value == '') {
 					//address2 and 3 are optional
 					if (input != "address2" && input != "address3") {
 						error += "- Field " + input + " is empty.<br/>"
@@ -74,12 +74,12 @@ const
 		checkIfBillingFilled: cb => {
 			var error = ''
 			Data.fieldsBilling.forEach((input, index, array) => {
-				// if (document.getElementById(input).value == '' && $('#'+input).is(":visible")) {
-				if (document.getElementById(input).value == '') {
+				if (document.getElementById(input).value == '' && $('#'+input).is(":visible")) {
+				// if (document.getElementById(input).value == '') {
 					error += "- Field " + input + " is empty.<br/>"
 				}
 				if (index === array.length - 1) cb(error)
-				// display the card from if id !=paypal
+				// display the card form if id !=paypal
 			})
 		}
 	},
@@ -128,31 +128,33 @@ const
 		}
 	},
 	editShipping = () => {
+		console.log("editShipping")
 		Data.checkIfShippingFilled(r => {
 			if (r.length == 0) {
 				console.log("shipping ok")
-				dsp("Information has been updated", "success")
+				// dsp("Information has been updated", "success")
 				var dataObj = JSON.parse(localStorage["data"])
 				Data.fieldsShipping.forEach((data, index, array) => {
 					dataObj[data] = document.getElementById(data).value
 					if (index === array.length - 1) 
 						localStorage["data"] = JSON.stringify(dataObj)
 				})
-			} else dsp(r, "error")		
+			// } else dsp(r, "error")
+			} else console.log(r)
 		})
 	},
 	editBilling = () => {
 		Data.checkIfBillingFilled(r => {
 			if (r.length == 0) {
-				console.log("billing ok")
-				dsp("Information has been updated", "success")
+				//dsp("Information has been updated", "success")
 				var dataObj = JSON.parse(localStorage["data"])
 				Data.fieldsBilling.forEach((data, index, array) => {
 					dataObj[data] = document.getElementById(data).value
 					if (index === array.length - 1) 
 						localStorage["data"] = JSON.stringify(dataObj)
 				})
-			} else dsp(r, "error")		
+			// } else dsp(r, "error")		
+			} else console.log("erro shipping")	
 		})
 	}
 
@@ -170,14 +172,6 @@ document.getElementById("submit").onclick = editBilling
 
 
 const
-	//display modal with success/error message
-	dsp = (msg, type) => {
-		if(type != "success") type = "danger"
-		document.getElementById("modal-text").innerHTML = msg
-		document.getElementById("close-modal").className = "btn btn-"+type
-		$('#important-msg').modal()  
-	},
-	//init all settings page
 	 _init = () => {
 	 	console.log("_init")
 		generateExpireDate()

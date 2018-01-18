@@ -390,16 +390,16 @@ h4 {
                   </td>
               </tr>
               <tr>
-                  <td><input class="form-control" id="card_number" type="text" placeholder="Card number"></td>
+                  <td><input class="form-control" id="card_number" type="text" placeholder="Card number" style="display: none;"></td>
               </tr>
               <tr>
                   <td>
-                      <select style="width: 49%" class="form-control" id="card_month"></select>
-                      <select style="width: 49%" class="form-control" id="card_year"></select>
+                      <select style="width: 49% ;display: none;" class="form-control" id="card_month"></select>
+                      <select style="width: 49% ;display: none;" class="form-control" id="card_year"></select>
                   </td>
               </tr>
               <tr>
-                  <td><input class="form-control" id="cvv" type="text" placeholder="CVV"></td>
+                  <td><input class="form-control" id="cvv" type="text" placeholder="CVV" style="display: none;"></td>
               </tr>
           </tbody>
         </table>
@@ -409,8 +409,12 @@ h4 {
         <form class="terms">
             <input type="checkbox" name="Terms-Conditions" value="Terms" class="terms-conditions">I agree to NML's Terms & Conditions<br>
             <br>
-            <input type="submit" value="Submit" class="submit-btn">
+            <input id="submit" type="submit" value="Submit" class="submit-btn">
         </form>
+
     <script src="autofill.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    <!-- <script src="bootstrap.js"></script> -->
+    <!-- <script src="tether.min.js"></script> -->
   </body>
 </html> 
