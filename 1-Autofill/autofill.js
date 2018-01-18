@@ -158,6 +158,19 @@ const
 		})
 	}
 
+const
+	_edit = () => {
+		editShipping()
+		editBilling()
+	}
+const
+	 _init = () => {
+	 	console.log("_init")
+		generateExpireDate()
+		Data.fill()
+	}
+
+
 if (typeof localStorage["data"] !== "string") localStorage["data"] = "{}"
 if (typeof localStorage["params"] !== "string") localStorage["params"] = "{}"
 if (typeof localStorage["keyword"] !== "string") localStorage["keyword"] = '{"0": {"category":"jackets", "keyword": "", "color": "", "size": "Small"}}'
@@ -167,16 +180,13 @@ document.getElementById('country').onchange = countryChange
 document.getElementById('card_type').onchange = billingChange
 document.getElementById('toggle1').onclick = displayShipping
 
-document.getElementById("submit").onclick = editShipping
-document.getElementById("submit").onclick = editBilling
+// document.getElementById("submit").onclick = editShipping
+// document.getElementById("submit").onclick = editBilling
+document.getElementById("submit").onclick = _edit
 
 
-const
-	 _init = () => {
-	 	console.log("_init")
-		generateExpireDate()
-		Data.fill()
-	}
+
+
 
 document.title = "Autofill"
 
