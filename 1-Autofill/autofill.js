@@ -1,3 +1,9 @@
+if (typeof localStorage["data"] !== "string") localStorage["data"] = "{}"
+if (typeof localStorage["params"] !== "string") localStorage["params"] = "{}"
+if (typeof localStorage["keyword"] !== "string") localStorage["keyword"] = '{"0": {"category":"jackets", "keyword": "", "color": "", "size": "Small"}}'
+if(localStorage['cgu'] === undefined) localStorage['cgu'] = false
+
+
 const
 
 	DATA = JSON.parse(localStorage["data"]),
@@ -75,7 +81,6 @@ const
 			var error = ''
 			Data.fieldsBilling.forEach((input, index, array) => {
 				if (document.getElementById(input).value == '' && $('#'+input).is(":visible")) {
-				// if (document.getElementById(input).value == '') {
 					error += "- Field " + input + " is empty.<br/>"
 				}
 				if (index === array.length - 1) cb(error)
@@ -84,13 +89,17 @@ const
 		}
 	},
 	displayShipping = () => {
-        var x = document.getElementById("shipping");
-        var y = document.getElementById("payment");
-        var z = document.getElementById("paymentHeader");
-        
-        x.style.display = x.style.display === 'none' ? '' : 'none';
-        y.style.display = y.style.display === 'none' ? '' : 'none';
-        z.style.display = z.style.display === 'none' ? '' : 'none';
+		if (document.getElementById('autoFill').checked) {
+
+	        document.getElementById("shipping").style.display = '';
+	        document.getElementById("payment").style.display = '';
+	        document.getElementById("paymentHeader").style.display = '';
+		}
+		else {
+	        document.getElementById("shipping").style.display = 'none';
+	        document.getElementById("payment").style.display = 'none';
+	        document.getElementById("paymentHeader").style.display = 'none';
+		}
     },
 	countryChange = () => {
 		var country = document.getElementById('country')
@@ -199,14 +208,9 @@ const
 	 _init = () => {
 		generateExpireDate()
 		Data.fill()
+		displayShipping()
 	}
 
-
-
-if (typeof localStorage["data"] !== "string") localStorage["data"] = "{}"
-if (typeof localStorage["params"] !== "string") localStorage["params"] = "{}"
-if (typeof localStorage["keyword"] !== "string") localStorage["keyword"] = '{"0": {"category":"jackets", "keyword": "", "color": "", "size": "Small"}}'
-if(localStorage['cgu'] === undefined) localStorage['cgu'] = false
 
 document.getElementById('country').onchange = countryChange
 document.getElementById('card_type').onchange = billingChange
