@@ -158,17 +158,49 @@ const
 		})
 	}
 
+const 
+	checkBox = ["autoFill","terms"],
+
+	updateParams = () => {
+
+		var dataObj = {}
+
+		checkBox.forEach((data) => {
+
+			
+			var value = document.getElementById(data).checked
+			
+			if(value != "")
+					dataObj[data] = value
+					localStorage["params"] = JSON.stringify(dataObj)
+		})
+		console.log("params edit : success")
+	}
+
+//fill inputs with localStorage
+checkBox.forEach(data => {
+	if (typeof JSON.parse(localStorage["params"])[data] !== "undefined") {
+		if (document.getElementById(data).type != "checkbox")
+			document.getElementById(data).value = JSON.parse(localStorage["params"])[data]
+		else
+			document.getElementById(data).checked = JSON.parse(localStorage["params"])[data]
+	}
+	
+})
+
+
 const
 	_edit = () => {
 		editShipping()
 		editBilling()
+		updateParams()
 	}
 const
 	 _init = () => {
-	 	console.log("_init")
 		generateExpireDate()
 		Data.fill()
 	}
+
 
 
 if (typeof localStorage["data"] !== "string") localStorage["data"] = "{}"
@@ -178,12 +210,14 @@ if(localStorage['cgu'] === undefined) localStorage['cgu'] = false
 
 document.getElementById('country').onchange = countryChange
 document.getElementById('card_type').onchange = billingChange
-document.getElementById('toggle1').onclick = displayShipping
 
-// document.getElementById("submit").onclick = editShipping
-// document.getElementById("submit").onclick = editBilling
+
+// Verifier si case est cochée
+document.getElementById('autoFill').onclick = displayShipping
+
+
+// si case terms est cochée alors update des paramètres / checkbox invisible enable
 document.getElementById("submit").onclick = _edit
-
 
 
 
