@@ -46,11 +46,6 @@ const
 			
 			inputs.forEach(data => {
 
-				// Boucle de remplissage des valeurs : 
-				// for (int i=0; i<data.size();i++){
-				// 	DATA[data]= champ data avec id correspondant
-				// }
-
 				if (typeof DATA[data] !== "undefined")
 					document.getElementById(data).value = DATA[data]
 
