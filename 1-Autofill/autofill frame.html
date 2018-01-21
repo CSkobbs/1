@@ -67,32 +67,40 @@ h4 {
     height:30px;
     background: black;
     text-align: center;
-    position: relative;
+    /*position: relative;*/
     vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .rectangle-container{
-  width:125px;
-  height:125px;
-  /*width:200px;
-  height:200px;*/
+  /*width:125px;*/
+  /*height:125px;*/
+  width:200px;
+  height:200px;
   border:1px solid #000;
 }
 
 .submit-btn{
   text-align: center;
   font-family: "Courier New";
+  width: 50px;
+  height: 10px;
+  font-size: 75%;
+  /*custom button submit*/
 }
 
 .terms{
   text-align: center;
   font-family: "Courier New";
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .icon{
-  width:64px;
-  height:64px;
+  width:128px;
+  height:128px;
+  margin-top: auto;
+  margin-bottom: auto;
   /*margin-top: 20px;*/
 }
 
@@ -192,6 +200,18 @@ h4 {
   margin-left: -.8em;
 }
 
+.form-control{
+  width: 300px;
+  height: 25px;
+  font-size: 90%;
+}
+
+.payment-selector{
+  width: 300px;
+  height: 25px;
+  font-family: "Courier New";
+  font-size: 80%;
+}
 
 </style>
 </head>
@@ -382,8 +402,8 @@ h4 {
               <tr>
                   <h4 id="paymentHeader" style="display : none;">Payment</h4>
                   <td>
-                      <select id="card_type">
-                          <option value="" disabled="disabled" selected="selected">Payment Method</option>
+                      <select id="card_type" class="payment-selector">
+                          <option value="" disabled="disabled" selected="selected" >Payment Method</option>
                           <option value="visa">Visa card</option>
                           <option value="american_express">American Express card </option>
                           <option value="master">Mastercard card</option>
