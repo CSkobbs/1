@@ -7,11 +7,9 @@ if(localStorage['cgu'] === undefined) localStorage['cgu'] = false
 const 
 	Delay = () => {
     	var x = document.getElementById("delayInput").value;
-    	console.log(x +'s')
 	}
 
 	displayDelay = () => {
-		console.log("call displayDelay")
 		if (document.getElementById('Delay').checked) {
 			document.getElementById("delayStepper").style.display = '';
 		} else {
@@ -20,6 +18,7 @@ const
     }
 
 const 
+	paramsFields = ["checkoutDelay"],
 	checkBox = ["Delay","terms"],
 
 	updateParams = () => {
@@ -48,7 +47,6 @@ checkBox.forEach(data => {
 	}
 	
 })
-
 
 const
 	_edit = () => {
